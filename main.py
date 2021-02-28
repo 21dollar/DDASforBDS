@@ -8,9 +8,9 @@ from network import NetworkNode
 from utils import *
 
 
-class DO(NetworkNode):
+class DataOwner(NetworkNode):
     def __init__(self):
-        super(DO, self).__init__('DO', '127.0.0.1')
+        super(DataOwner, self).__init__('DO', '127.0.0.1')
         self.pk = (0, 0)
         self.sk = (0, 0)
         self.DbitRepository = DbitRepository()
@@ -97,9 +97,9 @@ class DO(NetworkNode):
         print(self.DbitRepository)
 
 
-class TPA(NetworkNode):
+class ThirdPartyAudit(NetworkNode):
     def __init__(self):
-        super(TPA, self).__init__('TPA', '127.0.0.1')
+        super(ThirdPartyAudit, self).__init__('TPA', '127.0.0.1')
         self.r = 0
         self.s = 0
 
@@ -141,9 +141,9 @@ class TPA(NetworkNode):
 
 
     
-class SP(NetworkNode):
+class ServiceProvider(NetworkNode):
     def __init__(self):
-        super(SP, self).__init__('SP', '127.0.0.1')
+        super(ServiceProvider, self).__init__('SP', '127.0.0.1')
 
     def genProof(self, filename):
         name, chal = self.recv_from()
@@ -173,9 +173,9 @@ class SP(NetworkNode):
 
 
 
-do = DO()
-tpa = TPA()
-sp = SP()
+do = DataOwner()
+tpa = ThirdPartyAudit()
+sp = ServiceProvider()
 
 do.setUp()
 do.tagGen('file.txt')
